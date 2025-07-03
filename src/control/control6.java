@@ -10,6 +10,7 @@ public class control6 {
             String cmd = sc.nextLine();
             if(cmd.equals("q")) {
                 System.out.println("quit");
+                break;
             } else if(cmd.equals("i")){
                 System.out.println("insert");
             } else if(cmd.equals("s")){
@@ -21,10 +22,7 @@ public class control6 {
             } else {
                 System.out.println("command");
             }
-
         }
-
-
+        sc.close();
     }
-
 }
