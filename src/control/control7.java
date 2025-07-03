@@ -98,21 +98,61 @@ public class control7 {
 
                 for (int i = 0; i < arr.length; i++) {
                     for (int j = 0; j < arr[i].length; j++) {
-                        int rNum = rand.nextInt(10)+1;
+                        int rNum = rand.nextInt(30)+1;
                         boolean flag = false;
 
-                        for (int k = 0; k < i; k++) {
-                            if (arr[i][k] == rNum) {
-                                flag = true;
-                                break;
+                        for (int x = 0; x < arr.length; x++) {
+                            for (int y = 0; y < arr[x].length; y++) {
+                                if (arr[x][y] == rNum) {
+                                    flag = true;
+                                    break;
+                                }
                             }
-                        if (flag) {
+                            if (flag) break;
+                        }
 
+                        if (flag) {
+                            j--;
+                            continue;
                         }
-                        }
+
+                        arr[i][j] = rNum;
+
                     }
 
                 }
+                System.out.println("배열 값:");
+                for (int i = 0; i < arr.length; i++) {
+                    for (int j = 0; j < arr[i].length; j++) {
+                        System.out.printf("%3d ", arr[i][j]);
+                    }
+                    System.out.println();
+                }
+
+                int sum = 0;
+                int count = arr1 * arr2;
+
+                for (int i = 0; i < arr.length; i++) {
+                    for (int j = 0; j < arr[i].length; j++) {
+                        sum += arr[i][j];
+                    }
+                }
+                double avg = (double) sum / count;
+
+                System.out.println("합계: " + sum);
+                System.out.printf("평균: %.2f\n", avg);
+
+                int max = arr[0][0];
+                int min = arr[0][0];
+
+                for (int i = 0; i < arr.length; i++) {
+                    for (int j = 0; j < arr[i].length; j++) {
+                        if (arr[i][j] > max) max = arr[i][j];
+                        if (arr[i][j] < min) min = arr[i][j];
+                    }
+                }
+                System.out.printf("최대값: %d, 최소값: %d\n", max, min);
+
 
 
 
