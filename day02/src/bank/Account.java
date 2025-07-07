@@ -1,5 +1,7 @@
 package bank;
 
+import javax.security.auth.login.AccountException;
+
 public class Account{
     private String accNo;
     private double balance;
@@ -20,19 +22,22 @@ public class Account{
 
     }
 
-    public void deposit(double money) {
+    public void deposit(double money) throws AccountException {
+        if(money < 0) {
+            throw new NegativeArraySizeException("Ex002");
+        }
         this.balance += money;
         System.out.printf("입금처리 완료: \n");
 
     }
 
-    public void withdraw(double money) {
+    public void withdraw(double money) throws NotEnoughBalanceException {
         // 출금 금액이 balance보다 커야 한다.
-        if (this.balance > money) {
-            System.out.printf("잔액부족: \n");
+        if (money > this.balance) {
+            throw new NotEnoughBalanceException("EX0001");
         }
         this.balance -= money;
-        System.out.printf("당행 출금: \n");
+        System.out.printf("당행 출금 완료: \n");
     }
 
     public void withdraw(double money, String acc) {
