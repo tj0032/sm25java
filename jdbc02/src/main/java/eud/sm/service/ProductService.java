@@ -1,8 +1,11 @@
 package eud.sm.service;
 
+import eud.sm.dto.Cust;
 import eud.sm.dto.Product;
 import eud.sm.frame.ConnectionPool;
+import eud.sm.frame.SmRepository;
 import eud.sm.frame.SmService;
+import eud.sm.repository.CustRepository;
 import eud.sm.repository.ProductRepository;
 
 import java.sql.Connection;
@@ -11,80 +14,99 @@ import java.util.List;
 
 public class ProductService implements SmService<Product, Integer> {
 
-    private ProductRepository productRepository;
-    private ConnectionPool connectionPool;
+    ProductRepository productRepository;
+    ConnectionPool connectionPool;
 
-    public ProductService() {
+    public ProductService(){
         this.productRepository = new ProductRepository();
         try {
             connectionPool = ConnectionPool.create();
         } catch (SQLException e) {
-            throw new RuntimeException("생성 실패", e);
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     public void register(Product product) throws Exception {
         Connection conn = connectionPool.getConnection();
-        try {
+        try{
             conn.setAutoCommit(false);
             productRepository.insert(product, conn);
+            //custRepository.insert(cust, conn);
             conn.commit();
-        } catch (Exception e) {
+        }catch(Exception e){
             conn.rollback();
             throw e;
-        } finally {
-            if (conn != null) connectionPool.releaseConnection(conn);
+        }finally {
+            if (conn != null) {
+                connectionPool.releaseConnection(conn);
+            }
         }
     }
 
     @Override
     public void modify(Product product) throws Exception {
         Connection conn = connectionPool.getConnection();
-        try {
+        try{
             conn.setAutoCommit(false);
             productRepository.update(product, conn);
             conn.commit();
-        } catch (Exception e) {
+        }catch(Exception e){
             conn.rollback();
             throw e;
-        } finally {
-            if (conn != null) connectionPool.releaseConnection(conn);
+        }finally {
+            if (conn != null) {
+                connectionPool.releaseConnection(conn);
+            }
         }
     }
 
     @Override
-    public void remove(Integer productId) throws Exception {
+    public void remove(Integer integer) throws Exception {
         Connection conn = connectionPool.getConnection();
-        try {
+        try{
             conn.setAutoCommit(false);
-            productRepository.delete(productId, conn);
+            productRepository.delete(integer, conn);
             conn.commit();
-        } catch (Exception e) {
+        }catch(Exception e){
             conn.rollback();
             throw e;
-        } finally {
-            if (conn != null) connectionPool.releaseConnection(conn);
+        }finally {
+            if (conn != null) {
+                connectionPool.releaseConnection(conn);
+            }
         }
     }
 
     @Override
     public List<Product> get() throws Exception {
+        List<Product> list = null;
         Connection conn = connectionPool.getConnection();
-        try {
-            return productRepository.selectAll(conn);
-        } finally {
-            if (conn != null) connectionPool.releaseConnection(conn);
+        try{
+            list = productRepository.selectAll(conn);
+        }catch(Exception e){
+            throw e;
+        }finally {
+            if (conn != null) {
+                connectionPool.releaseConnection(conn);
+            }
         }
+        return list;
     }
 
     @Override
-    public Product get(Integer productId) throws Exception {
+    public Product get(Integer integer) throws Exception {
+        Product product = null;
         Connection conn = connectionPool.getConnection();
-        try {
-            return productRepository.select(productId, conn);
-        } finally {
-            if (conn != null) connectionPool.releaseConnection(conn);
+        try{
+            product = productRepository.select(integer, conn);
+        }catch(Exception e){
+            throw e;
+        }finally {
+            if (conn != null) {
+                connectionPool.releaseConnection(conn);
+            }
         }
+        return product;
     }
 }

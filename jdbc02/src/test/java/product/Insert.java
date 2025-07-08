@@ -1,33 +1,23 @@
 package product;
 
+import eud.sm.dto.Cust;
 import eud.sm.dto.Product;
+import eud.sm.service.CustService;
 import eud.sm.service.ProductService;
 import org.junit.jupiter.api.Test;
-
-import java.sql.Timestamp;
 
 public class Insert {
 
     @Test
-    public void insert() throws Exception {
-        System.out.println("Product Insert Test Start...");
+    public void insert(){
+        System.out.println("insert Test Start ...");
         ProductService productService = new ProductService();
-
-        Product product = Product.builder()
-                .productName("청바지")
-                .productPrice(25000)
-                .discountRate(0.15)
-                .productImg("j1.jpg")
-                .cateId(10)
-                .productRegdate(new Timestamp(System.currentTimeMillis()))
-                .productUpdate(new Timestamp(System.currentTimeMillis()))
-                .build();
-
+        Product product = Product.builder().productName("바지2").productPrice(100).discountRate(0.2).cateId(10).productImg("bb.jpg").build();
         try {
             productService.register(product);
-            System.out.println("등록 성공!");
+            System.out.println("등록 정상");
         } catch (Exception e) {
-            System.out.println("등록 실패!");
+            System.out.println("등록 오류");
             e.printStackTrace();
         }
     }

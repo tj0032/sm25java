@@ -1,30 +1,24 @@
 package product;
 
+import eud.sm.dto.Cust;
 import eud.sm.dto.Product;
+import eud.sm.service.CustService;
 import eud.sm.service.ProductService;
 import org.junit.jupiter.api.Test;
 
 public class Update {
 
     @Test
-    public void update() {
-        System.out.println("Product Update Test Start ...");
+    public void insert(){
+        System.out.println("Update Test Start ...");
         ProductService productService = new ProductService();
-
-        Product product = Product.builder()
-                .productId(1002)
-                .productName("트레이닝 팬츠")
-                .productPrice(25000)
-                .discountRate(0.2)
-                .productImg("pants_update.jpg")
-                .cateId(30)
-                .build();
+        Product product = Product.builder().productName("바지22").productId(1003).productPrice(100).discountRate(0.2).cateId(10).productImg("bb.jpg").build();
 
         try {
             productService.modify(product);
-            System.out.println("수정 성공");
+            System.out.println("수정 정상");
         } catch (Exception e) {
-            System.out.println("수정 실패");
+            System.out.println("수정 오류");
             e.printStackTrace();
         }
     }
