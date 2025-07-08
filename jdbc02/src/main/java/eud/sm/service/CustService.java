@@ -27,8 +27,12 @@ public class CustService implements SmService<Cust, String> {
     public void register(Cust cust) throws Exception {
         Connection conn = connectionPool.getConnection();
         try{
+            conn.setAutoCommit(false);
             custRepository.insert(cust, conn);
+            custRepository.insert(cust, conn);
+            conn.commit();
         }catch(Exception e){
+            conn.rollback();
             throw e;
         }finally {
             if (conn != null) {
@@ -49,7 +53,18 @@ public class CustService implements SmService<Cust, String> {
 
     @Override
     public List<Cust> get() throws Exception {
-        return List.of();
+        List<Cust> list = null;
+        Connection conn = connectionPool.getConnection();
+        try {
+            list = custRepository.selectAll(conn);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (conn != null) {
+                connectionPool.releaseConnection(conn);
+            }
+        }
+        return list;
     }
 
     @Override

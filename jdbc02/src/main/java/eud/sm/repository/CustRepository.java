@@ -6,6 +6,8 @@ import eud.sm.frame.SmRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustRepository implements SmRepository<Cust, String> {
@@ -40,7 +42,33 @@ public class CustRepository implements SmRepository<Cust, String> {
 
     @Override
     public List<Cust> selectAll(Connection conn) throws Exception {
-        return List.of();
+        List<Cust> list = new ArrayList<>();
+        PreparedStatement psmt = null;
+        ResultSet rs = null;
+        try{
+            psmt=conn.prepareStatement(CustSql.selectAll);
+            rs=psmt.executeQuery();
+            while(rs.next()){
+                Cust cust = new Cust();
+                cust.setCustId(rs.getString("cust_id"));
+                cust.setCustPwd(rs.getString("cust_pwd"));
+                cust.setCustName(rs.getString("cust_name"));
+                cust.setCustRegdate(rs.getTimestamp("cust_regdate"));
+                cust.setCustUpdate(rs.getTimestamp("cust_update"));
+                list.add(cust);
+            }
+        }catch (Exception e){
+            throw e;
+        }finally {
+            if (psmt != null) {
+                psmt.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+
+        return list;
     }
 
     @Override

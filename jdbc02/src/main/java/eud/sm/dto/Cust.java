@@ -1,9 +1,8 @@
 package eud.sm.dto;
 
-import com.google.protobuf.Timestamp;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -17,9 +16,3 @@ public class Cust {
     private Timestamp custRegdate;
     private Timestamp custUpdate;
 }
-
-
-
-
-
-

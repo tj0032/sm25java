@@ -10,9 +10,9 @@ public class insert {
         System.out.println("insert Test Start...");
         CustService custService= new CustService();
         Cust cust = Cust.builder()
-                .custId("id55")
-                .custPwd("pwd55")
-                .custName("홍말순")
+                .custId("id57")
+                .custPwd("pwd57")
+                .custName("홍말고")
                 .build();
         try {
             custService.register(cust);
