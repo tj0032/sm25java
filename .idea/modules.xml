@@ -4,6 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/day02/day02.iml" filepath="$PROJECT_DIR$/day02/day02.iml" />
       <module fileurl="file://$PROJECT_DIR$/java.iml" filepath="$PROJECT_DIR$/java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc01.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc01.main.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc01.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc01.test.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc01.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc02.iml" filepath="$PROJECT_DIR$/jdbc02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc02.main.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc02.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jdbc02.test.iml" filepath="$PROJECT_DIR$/.idea/modules/jdbc02.test.iml" />
     </modules>
   </component>
 </project>
