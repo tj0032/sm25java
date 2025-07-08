@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="cust.SelectAll" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-07-08T06:44:12.572Z" hostname="GRAM" time="0.317">
+  <properties/>
+  <testcase name="selectAll()" classname="cust.SelectAll" time="0.317"/>
+  <system-out><![CDATA[OK
+jdbc:mysql://localhost:3306/shopdb?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Seoul
+Cust(custId=id01, custPwd=pwd01, custName=이말숙, custRegdate=2025-07-08 14:49:30.0, custUpdate=2025-07-08 14:49:30.0)
+Cust(custId=id02, custPwd=pwd02, custName=김말숙, custRegdate=2025-07-08 14:49:30.0, custUpdate=2025-07-08 14:49:30.0)
+Cust(custId=id03, custPwd=pwd03, custName=황말숙, custRegdate=2025-07-08 14:49:30.0, custUpdate=2025-07-08 14:49:30.0)
+Cust(custId=id55, custPwd=pwd55, custName=홍말순, custRegdate=2025-07-08 14:49:47.0, custUpdate=2025-07-08 14:49:47.0)
+Cust(custId=id56, custPwd=pwd56, custName=홍말, custRegdate=2025-07-08 15:03:12.0, custUpdate=2025-07-08 15:03:12.0)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
