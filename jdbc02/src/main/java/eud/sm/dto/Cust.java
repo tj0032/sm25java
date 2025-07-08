@@ -1,5 +1,6 @@
 package eud.sm.dto;
 
+import com.google.protobuf.Timestamp;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -8,11 +9,17 @@ import java.time.LocalDateTime;
 @ToString
 @Getter
 @Setter
-
+@Builder
 public class Cust {
     private String custId;
     private String custPwd;
     private String custName;
-    private LocalDateTime custRegdate;
-    private LocalDateTime custUpdate;
+    private Timestamp custRegdate;
+    private Timestamp custUpdate;
 }
+
+
+
+
+
+
